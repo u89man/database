@@ -1,0 +1,20 @@
+{
+  "name": "u89man/database",
+  "version": "0.1.0",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "u89man",
+      "email": "u89man@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "U89Man\\Database\\": "src"
+    }
+  },
+  "require": {
+    "ext-pdo": "*"
+  }
+}
+
