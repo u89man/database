@@ -1,4 +1,12 @@
-Database 0.1.0
+## Database 0.1.0
+
+##### Установка
+
+```
+composer require u89man/database
+```
+
+##### Примеры
 
 ```php
 use U89Man\Database\DB;
