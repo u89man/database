@@ -119,7 +119,7 @@ class DB
      */
     public function update($table, array $data, $where = null, array $params = null)
     {
-        $setData = array_map(function ($k, $v) { return $k.' = "'.$v.'"'; }, array_keys($data), array_values($data));
+        $setData = array_map(function ($k, $v) { return $k.' = '.$v; }, array_keys($data), array_values($data));
 
         $sql = 'UPDATE '.$table.' SET '.implode(', ', $setData);
 
