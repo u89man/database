@@ -9,6 +9,11 @@ use PDOStatement;
 class DB
 {
     /**
+     * @var int
+     */
+    protected static $queryCounter = 0;
+
+    /**
      * @var PDO
      */
     protected $pdo;
@@ -36,6 +41,8 @@ class DB
             $stmt = $this->pdo->prepare($sql);
 
             if ($stmt->execute($params)) {
+                self::$queryCounter++;
+
                 return $stmt;
             }
         }
@@ -44,6 +51,14 @@ class DB
         }
 
         return null;
+    }
+
+    /**
+     * @return int
+     */
+    public static function getQueryCounter()
+    {
+        return self::$queryCounter;
     }
 
     /**
