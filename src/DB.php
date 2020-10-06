@@ -92,7 +92,7 @@ class DB
      *
      * @return int
      */
-    public function insert($table, array $data)
+    public function insert($table, array $data = array())
     {
         $params = [];
         foreach ($data as $key => $value) {
