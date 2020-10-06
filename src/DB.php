@@ -14,6 +14,11 @@ class DB
     protected static $queryCounter = 0;
 
     /**
+     * @var array
+     */
+    protected static $sqlList = [];
+
+    /**
      * @var PDO
      */
     protected $pdo;
@@ -40,6 +45,8 @@ class DB
 
             $stmt = $this->pdo->prepare($sql);
 
+            self::$sqlList[] = ['sql' => $sql, 'params' => $params];
+
             if ($stmt->execute($params)) {
                 self::$queryCounter++;
 
@@ -59,6 +66,14 @@ class DB
     public static function getQueryCounter()
     {
         return self::$queryCounter;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getSqlList()
+    {
+        return self::$sqlList;
     }
 
     /**
