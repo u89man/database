@@ -150,7 +150,11 @@ class DB
     public function update($table, array $data, $where = null, array $params = null)
     {
         $func = function ($k, $v) {
-            return $k.' = '.(is_string($v) && ($v != '?' || substr($v, 0, 1) != ':') ? '"'.$v.'"' : $v);
+            if (is_string($v)) {
+                return $k.' = '.($v == '?' || substr($v, 0, 1) == ':' ? $v : '"'.$v.'"');
+            } else {
+                return $k.' = '.$v;
+            }
         };
 
         $setData = array_map($func, array_keys($data), array_values($data));
